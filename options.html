@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNR Domain Redirector - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>DNR Domain Redirector</h1>
+      <p class="subtitle">Automatically redirect from one domain to another</p>
+    </header>
+
+    <main>
+      <!-- Add New Rule Section -->
+      <section class="add-rule-section">
+        <h2>Add Redirect Rule</h2>
+        <form id="add-rule-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="source-domain">Source Domain (from)</label>
+              <input
+                type="text"
+                id="source-domain"
+                name="source-domain"
+                placeholder="aaa.com"
+                required
+                aria-describedby="source-help"
+              >
+              <small id="source-help" class="help-text">Domain only, without protocol or path</small>
+            </div>
+
+            <div class="arrow-icon">→</div>
+
+            <div class="form-group">
+              <label for="target-domain">Target Domain (to)</label>
+              <input
+                type="text"
+                id="target-domain"
+                name="target-domain"
+                placeholder="http://bbb.com"
+                required
+                aria-describedby="target-help"
+              >
+              <small id="target-help" class="help-text">With protocol (http:// or https://)</small>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">Add Rule</button>
+        </form>
+
+        <div class="example-box">
+          <strong>Example:</strong>
+          <code>https://aaa.com/page?param=123</code>
+          <span class="arrow">→</span>
+          <code>http://bbb.com/page?param=123</code>
+        </div>
+      </section>
+
+      <!-- Status Message -->
+      <div id="status-message" class="status-message" role="alert" aria-live="polite"></div>
+
+      <!-- Rules List Section -->
+      <section class="rules-list-section">
+        <h2>Current Redirect Rules</h2>
+        <div id="rules-list" class="rules-list">
+          <!-- Rules will be dynamically inserted here -->
+        </div>
+        <div id="empty-state" class="empty-state" style="display: none;">
+          <p>No redirect rules. Add your first rule above.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="footer-note">
+        <strong>Note:</strong> Extension works with exact domain match only (no subdomains).
+        All URL parameters (path, query, hash) are preserved during redirect.
+      </p>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
